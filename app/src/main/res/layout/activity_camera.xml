@@ -4,15 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.zl.ncnn.CameraPreView
+    <com.zl.demo.CameraPreView
         android:id="@+id/camera_preview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <com.zl.ncnn.FaceRectView
+    <com.zl.demo.FaceRectView
         android:id="@+id/rectview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:strokeColor="#3781EC"
-        app:strokeWidth="10dp"/>
+        app:strokeWidth="10dp" />
 </RelativeLayout>
