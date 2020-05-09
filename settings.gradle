@@ -1,1 +1,3 @@
-include ':app', ':FaceDetect'
+rootProject.name='face_ncnn'
+include ':app'
+include ':FaceLibrary'
