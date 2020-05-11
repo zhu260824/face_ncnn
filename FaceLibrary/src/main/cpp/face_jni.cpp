@@ -7,10 +7,10 @@
 #include <vector>
 #include "ultra_face.h"
 #include "mobile_facenet.h"
+#include "base_util.h"
 #include <iostream>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/imgproc.hpp>
-#include "ndk_util.h"
 
 #define TAG "FaceLibrary"
 #define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG,TAG,__VA_ARGS__)
@@ -115,10 +115,10 @@ Java_com_zl_face_FaceDetector_getFeature(JNIEnv *env, jobject thiz, jstring img_
     const char *imgPath = env->GetStringUTFChars(img_path, 0);
     cv::Mat cv_img = cv::imread(imgPath);
     ncnn::Mat inmat = ncnn::Mat::from_pixels(cv_img.data, ncnn::Mat::PIXEL_BGR2RGB,
-                                                    cv_img.cols, cv_img.rows);
+                                             cv_img.cols, cv_img.rows);
     float *feature = recognize->getFeature(inmat);
-    face_feature = env->NewFloatArray(128);
-    env->SetFloatArrayRegion(face_feature, 0, 128, feature);
+    face_feature = env->NewFloatArray(feature_dim);
+    env->SetFloatArrayRegion(face_feature, 0, feature_dim, feature);
     return face_feature;
 }
 
@@ -132,8 +132,8 @@ Java_com_zl_face_FaceDetector_getFeatureYuv(JNIEnv *env, jobject thiz, jbyteArra
     ncnn::Mat inmat = ncnn::Mat::from_pixels(image.data, ncnn::Mat::PIXEL_GRAY2RGB,
                                              image.cols, image.rows);
     float *feature = recognize->getFeature(inmat);
-    face_feature = env->NewFloatArray(128);
-    env->SetFloatArrayRegion(face_feature, 0, 128, feature);
+    face_feature = env->NewFloatArray(feature_dim);
+    env->SetFloatArrayRegion(face_feature, 0, feature_dim, feature);
     return face_feature;
 }
 

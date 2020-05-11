@@ -13,18 +13,12 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "base_util.h"
 
 #define num_featuremap 4
 #define hard_nms 1
 #define blending_nms 2
 
-typedef struct FaceInfo {
-    float x1;
-    float y1;
-    float x2;
-    float y2;
-    float score;
-} FaceInfo;
 
 class UltraFace {
 public:

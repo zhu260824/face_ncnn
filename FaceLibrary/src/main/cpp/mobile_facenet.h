@@ -8,6 +8,7 @@
 #include <string>
 #include "ncnn/net.h"
 #include <vector>
+#include "base_util.h"
 
 class FaceRecognize {
 public:
@@ -30,11 +31,14 @@ private:
 
     bool run_gpu = false;
 
-    int resize_w_h = 112;
+
 
     float *runNet(ncnn::Mat &img);
 };
 
+const int feature_dim = 128;
+
+const int resize_w_h = 112;//96 or 112
 
 double calculSimilar(float *feat1, float *feat2);
 

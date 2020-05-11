@@ -64,7 +64,7 @@ float *FaceRecognize::runNet(ncnn::Mat &img) {
     ex.input("data", in);
     ncnn::Mat out;
     ex.extract("fc1", out);
-    float *feature = new float[128];
+    float *feature = new float[feature_dim];
     for (int j = 0; j < 128; j++) {
         feature[j] = out[j];
     }
@@ -72,11 +72,8 @@ float *FaceRecognize::runNet(ncnn::Mat &img) {
 }
 
 double calculSimilar(float *feature1, float *feature2) {
-    int feature_size1 = sizeof(feature1) / sizeof(feature1[0]);
-    int feature_size2 = sizeof(feature2) / sizeof(feature2[0]);
-    assert(feature_size1 == feature_size2);
     double ret = 0.0, mod1 = 0.0, mod2 = 0.0;
-    for (std::vector<double>::size_type i = 0; i != feature_size1; ++i) {
+    for (std::vector<double>::size_type i = 0; i != feature_dim; ++i) {
         ret += feature1[i] * feature2[i];
         mod1 += feature1[i] * feature1[i];
         mod2 += feature2[i] * feature2[i];

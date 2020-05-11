@@ -29,7 +29,8 @@ file(GLOB_RECURSE CPP_SRCS
         src/main/cpp/ultra_face.cpp
         src/main/cpp/mobile_facenet.h
         src/main/cpp/mobile_facenet.cpp
-        src/main/cpp/ndk_util.h
+        src/main/cpp/base_util.h
+        src/main/cpp/base_util.cpp
         src/main/cpp/face_jni.cpp)
 
 add_library(faceLibrary SHARED ${CPP_SRCS})

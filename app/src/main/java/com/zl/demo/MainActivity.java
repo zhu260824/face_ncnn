@@ -81,10 +81,10 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_t4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ivT41.post(() -> ivT41.setImageBitmap(ImageUtil.getBitmapByAssets(ivT41.getContext(), "img/test5.png")));
+                ivT41.post(() -> ivT41.setImageBitmap(ImageUtil.getBitmapByAssets(ivT41.getContext(), "img/test3.png")));
                 ivT42.post(() -> ivT42.setImageBitmap(ImageUtil.getBitmapByAssets(ivT42.getContext(), "img/test4.png")));
                 long startTime = System.currentTimeMillis();
-                float[] feature1 = detector.getFeature(imgPath + File.separator + "img/test5.png");
+                float[] feature1 = detector.getFeature(imgPath + File.separator + "img/test3.png");
                 Log.i("canshu", "耗时：" + (System.currentTimeMillis() - startTime));
                 Log.i("canshu", Arrays.toString(feature1));
                 startTime = System.currentTimeMillis();
